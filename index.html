@@ -1,0 +1,39 @@
+from flask import Flask, request, jsonify, render_template
+
+app = Flask(__name__)
+
+# Define a route for the homepage
+@app.route('/')
+def index():
+    # Get all users from database
+    users = User.get_all_users()
+
+    # Render the template with the users data
+    return render_template('index.html', users=users)
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Users index page</title>
+    </head>
+    <body>
+        <h1>Users</h1>
+        <table>
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.Nurislam }}</td>
+                <td>{{ user.Shermatov }}</td>
+                <td>{{ user.16 }}</td>
+                <td>{{ user.nurislamshermatov280@gmail.com }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
